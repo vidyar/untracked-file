@@ -2,5 +2,10 @@ language: python
 python:
  - 2.7
 install: true
-script: echo "hello,gm " 
-
+script: echo "hello,gm " >> b.txt
+before_archive:
+       - ls
+       - mv  b.txt  shippable/
+after_archive:
+      - echo $SHIPPABLE_ARTIFACTS_URL
+      - echo $ARTIFACTS_UPLOAD_SUCCESSFUL
